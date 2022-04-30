@@ -3,7 +3,7 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 
 // Your web app's Firebase configuration
@@ -19,5 +19,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 export const currentUser = getAuth().currentUser
+// export const authStateChanged = onAuthStateChanged()
 // export const createUserWithEmail = createUserWithEmailAndPassword()
 // export const signInWithEmail = signInWithEmailAndPassword()
