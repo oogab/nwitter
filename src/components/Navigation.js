@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-const Navigation = () => <nav>
+const Navigation = ({ userObj, userDisplayName }) => <nav>
     <ul>
         <li>
             <Link to="/">Home</Link>
         </li>
         <li>
-            <Link to="/profile">My Profile</Link>
+            <Link to="/profile">{userDisplayName}의 Profile</Link>
         </li>
     </ul>
 </nav>
