@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/oogab/nwitter/static/css/main.7548e81a.css",
+    "main.js": "/oogab/nwitter/static/js/main.c4a7c78d.js",
+    "index.html": "/oogab/nwitter/index.html",
+    "main.7548e81a.css.map": "/oogab/nwitter/static/css/main.7548e81a.css.map",
+    "main.c4a7c78d.js.map": "/oogab/nwitter/static/js/main.c4a7c78d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7548e81a.css",
+    "static/js/main.c4a7c78d.js"
+  ]
+}
