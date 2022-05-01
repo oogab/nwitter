@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { dbService } from "fbase";
+import { v4 } from "uuid";
+import { dbService, storageService } from "fbase";
 import { collection, addDoc, getDocs, onSnapshot, doc } from "firebase/firestore";
+import { ref, uploadString } from "firebase/storage"
 import Nweet from "components/Nweet";
 
 const Home = ({ userObj }) => {
@@ -34,12 +36,15 @@ const Home = ({ userObj }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault()
-    const docRef = await addDoc(collection(dbService, "nweets"), {
-      text: nweet,
-      createdAt: Date.now(),
-      creatorId: userObj.uid,
-    })
-    setNweet("")
+    const fileRef = ref(storageService, `${userObj.uid}/${v4()}`)
+    const response = await uploadString(fileRef, attachment, "data_url")
+    console.log(response)
+    // await addDoc(collection(dbService, "nweets"), {
+    //   text: nweet,
+    //   createdAt: Date.now(),
+    //   creatorId: userObj.uid,
+    // })
+    // setNweet("")
   }
   const onChange = (event) => {
     const {target:{value}} = event
@@ -49,12 +54,12 @@ const Home = ({ userObj }) => {
     const {target:{files}} = event
     const theFile = files[0]
     const reader = new FileReader()
+    reader.readAsDataURL(theFile)
     reader.onloadend = (finishedEvent) => {
       // console.log(finishedEvent)
       const {currentTarget: {result}} = finishedEvent
       setAttachment(result)
     }
-    reader.readAsDataURL(theFile)
     // console.log(theFile)
   }
   const onClearAttachment= () => setAttachment(null)
