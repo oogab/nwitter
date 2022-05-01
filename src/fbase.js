@@ -1,10 +1,7 @@
 import firebase from "firebase/compat/app"
 
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
+  getAuth
 } from "firebase/auth";
 
 import {
